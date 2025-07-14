@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/loginFragment">
+
+    <fragment
+        android:id="@+id/fragment_registered_user"
+        android:name="com.ami.fixealopofabo.ui.fragments.RegisteredUserFragment"
+        android:label="Usuario Registrado" >
+        <action
+            android:id="@+id/action_fragment_registered_user_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.ami.fixealopofabo.ui.fragments.LoginFragment"
+        android:label="Login">
+        <action
+            android:id="@+id/action_loginFragment_to_registerFragment"
+            app:destination="@id/registerFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_categoryListFragment"
+            app:destination="@id/categoryListFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.ami.fixealopofabo.ui.fragments.RegisterFragment"
+        android:label="Register">
+        <action
+            android:id="@+id/action_registerFragment_to_fragment_registered_user"
+            app:destination="@id/fragment_registered_user" />
+        <action
+            android:id="@+id/action_registerFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/categoryListFragment"
+        android:name="com.ami.fixealopofabo.ui.fragments.CategoryListFragment"
+        android:label="Categorías">
+        <action
+            android:id="@+id/action_categoryListFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_categoryListFragment_to_workerListFragment"
+            app:destination="@id/workerListFragment" />
+        <action
+            android:id="@+id/action_categoryListFragment_to_myAppointmentsFragment"
+            app:destination="@id/myAppointmentsFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/workerListFragment"
+        android:name="com.ami.fixealopofabo.ui.fragments.WorkerListFragment"
+        android:label="Trabajadores">
+        <argument
+            android:name="categoryId"
+            app:argType="integer" />
+        <argument
+            android:name="categoryName"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_workerListFragment_to_workerDetailFragment"
+            app:destination="@id/workerDetailFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/workerDetailFragment"
+        android:name="com.ami.fixealopofabo.ui.fragments.WorkerDetailFragment"
+        android:label="Detalle trabajador">
+        <argument
+            android:name="workerId"
+            app:argType="integer" />
+        <argument
+            android:name="categoryId"
+            app:argType="integer"
+            android:defaultValue="-1" />
+        <action
+            android:id="@+id/action_workerDetailFragment_to_chatFragment"
+            app:destination="@id/chatFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/chatFragment"
+        android:name="com.ami.fixealopofabo.ui.fragments.ChatFragment"
+        android:label="Chat">
+        <action
+            android:id="@+id/action_chatFragment_to_locationPickerFragment"
+            app:destination="@id/locationPickerFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/locationPickerFragment"
+        android:name="com.ami.fixealopofabo.ui.fragments.LocationPickerFragment"
+        android:label="Ubicación" >
+        <action
+            android:id="@+id/action_locationPickerFragment_to_dateFragment"
+            app:destination="@id/dateFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/myAppointmentsFragment"
+        android:name="com.ami.fixealopofabo.ui.fragments.MyAppointmentsFragment"
+        android:label="Mis citas">
+        <action
+            android:id="@+id/action_myAppointmentsFragment_to_chatFragment"
+            app:destination="@id/chatFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/dateFragment"
+        android:name="com.ami.fixealopofabo.ui.fragments.DateFragment"
+        android:label="DateFragment"
+        tools:layout="@layout/fragment_date" >
+        <action
+            android:id="@+id/action_dateFragment_to_myAppointmentsFragment"
+            app:destination="@id/myAppointmentsFragment" />
+    </fragment>
+</navigation>
